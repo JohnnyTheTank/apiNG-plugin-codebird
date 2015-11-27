@@ -16,7 +16,7 @@ var jjtApingCodebird = angular.module("jtt_aping_codebird", [])
 
                 var appSettings = apingController.getAppSettings();
 
-                var requests = apingUtilityHelper.parseJsonFromAttributes(attrs.apingCodebird, apingCodebirdHelper.getThisPlattformString());
+                var requests = apingUtilityHelper.parseJsonFromAttributes(attrs.apingCodebird, apingCodebirdHelper.getThisPlattformString(), appSettings);
 
                 var cb = new Codebird;
                 cb.setBearerToken(apingApiKeys.twitter);
@@ -41,8 +41,6 @@ var jjtApingCodebird = angular.module("jtt_aping_codebird", [])
                             },
                             true
                         );
-
-
 
                     } else if(request.user) {
                         //https://dev.twitter.com/rest/reference/get/statuses/user_timeline

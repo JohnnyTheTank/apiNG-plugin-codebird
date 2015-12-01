@@ -107,7 +107,7 @@ jjtApingCodebird.service('apingCodebirdHelper', ['apingModels', 'apingTimeHelper
             socialObject.type = "image";
         } else {
             socialObject.type = "tweet";
-            if(_item.user && _codebirdSettings.showAvatar === true) {
+            if(_item.user && (_codebirdSettings.showAvatar === true || _codebirdSettings.showAvatar === 'true' ) ) {
                 socialObject.img_url = this.getImageUrlFromUserObject(_item.user);
             }
         }

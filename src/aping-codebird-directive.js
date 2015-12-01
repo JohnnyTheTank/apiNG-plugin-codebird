@@ -23,6 +23,10 @@ var jjtApingCodebird = angular.module("jtt_aping_codebird", [])
 
                 requests.forEach(function (request) {
 
+                    var codebirdSettings = {
+                        showAvatar : request.showAvatar || false,
+                    };
+
                     if(request.search) {
 
                         //https://dev.twitter.com/rest/reference/get/search/tweets
@@ -36,7 +40,7 @@ var jjtApingCodebird = angular.module("jtt_aping_codebird", [])
                             "search_tweets",
                             params,
                             function (_data) {
-                                apingController.concatToResults(apingCodebirdHelper.getObjectByJsonData(_data, appSettings.type));
+                                apingController.concatToResults(apingCodebirdHelper.getObjectByJsonData(_data, appSettings.type, codebirdSettings));
                                 apingController.apply();
                             },
                             true
@@ -53,7 +57,7 @@ var jjtApingCodebird = angular.module("jtt_aping_codebird", [])
                             "statuses_userTimeline",
                             params,
                             function (_data, rate, err) {
-                                apingController.concatToResults(apingCodebirdHelper.getObjectByJsonData(_data, appSettings.type));
+                                apingController.concatToResults(apingCodebirdHelper.getObjectByJsonData(_data, appSettings.type, codebirdSettings));
                                 apingController.apply();
                             },
                             true
@@ -61,7 +65,6 @@ var jjtApingCodebird = angular.module("jtt_aping_codebird", [])
                     } else {
                         return false;
                     }
-
                 });
             }
         }

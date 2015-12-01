@@ -79,6 +79,9 @@ jjtApingCodebird.service('apingCodebirdHelper', ['apingModels', 'apingTimeHelper
                 case "image":
                     returnObject = this.getImageItemByJsonData(_item, _codebirdSettings);
                     break;
+
+                default:
+                    return false;
             }
         }
         return returnObject;

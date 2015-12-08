@@ -40,7 +40,7 @@ jjtApingCodebird.service('apingCodebirdHelper', ['apingModels', 'apingTimeHelper
         return false;
     };
 
-    this.getObjectByJsonData = function (_data, _type, _codebirdSettings) {
+    this.getObjectByJsonData = function (_data, _model, _codebirdSettings) {
 
         var requestResults = [];
         if (_data) {
@@ -49,14 +49,14 @@ jjtApingCodebird.service('apingCodebirdHelper', ['apingModels', 'apingTimeHelper
             if (_data.statuses) {
 
                 angular.forEach(_data.statuses, function (value, key) {
-                    var tempResult = _this.getItemByJsonData(value, _type, _codebirdSettings);
+                    var tempResult = _this.getItemByJsonData(value, _model, _codebirdSettings);
                     if(tempResult) {
                         requestResults.push(tempResult);
                     }
                 });
             } else if (_data.length > 0) {
                 angular.forEach(_data, function (value, key) {
-                    var tempResult = _this.getItemByJsonData(value, _type, _codebirdSettings);
+                    var tempResult = _this.getItemByJsonData(value, _model, _codebirdSettings);
                     if(tempResult) {
                         requestResults.push(tempResult);
                     }
@@ -68,10 +68,10 @@ jjtApingCodebird.service('apingCodebirdHelper', ['apingModels', 'apingTimeHelper
         return requestResults;
     };
 
-    this.getItemByJsonData = function (_item, _type, _codebirdSettings) {
+    this.getItemByJsonData = function (_item, _model, _codebirdSettings) {
         var returnObject = {};
-        if (_item && _type) {
-            switch (_type) {
+        if (_item && _model) {
+            switch (_model) {
                 case "social":
                     returnObject = this.getSocialItemByJsonData(_item, _codebirdSettings);
                     break;

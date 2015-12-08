@@ -40,7 +40,7 @@ var jjtApingCodebird = angular.module("jtt_aping_codebird", [])
                             "search_tweets",
                             params,
                             function (_data) {
-                                apingController.concatToResults(apingCodebirdHelper.getObjectByJsonData(_data, appSettings.type, codebirdSettings));
+                                apingController.concatToResults(apingCodebirdHelper.getObjectByJsonData(_data, appSettings.model, codebirdSettings));
                                 apingController.apply();
                             },
                             true
@@ -57,7 +57,7 @@ var jjtApingCodebird = angular.module("jtt_aping_codebird", [])
                             "statuses_userTimeline",
                             params,
                             function (_data, rate, err) {
-                                apingController.concatToResults(apingCodebirdHelper.getObjectByJsonData(_data, appSettings.type, codebirdSettings));
+                                apingController.concatToResults(apingCodebirdHelper.getObjectByJsonData(_data, appSettings.model, codebirdSettings));
                                 apingController.apply();
                             },
                             true

@@ -7,7 +7,7 @@
  */
 
 var jjtApingCodebird = angular.module("jtt_aping_codebird", [])
-    .directive('apingCodebird', ['apingApiKeys', 'apingCodebirdHelper', 'apingUtilityHelper', function (apingApiKeys, apingCodebirdHelper, apingUtilityHelper) {
+    .directive('apingCodebird', ['apingCodebirdHelper', 'apingUtilityHelper', function (apingCodebirdHelper, apingUtilityHelper) {
         return {
             require: '?aping',
             restrict: 'A',
@@ -19,7 +19,8 @@ var jjtApingCodebird = angular.module("jtt_aping_codebird", [])
                 var requests = apingUtilityHelper.parseJsonFromAttributes(attrs.apingCodebird, apingCodebirdHelper.getThisPlattformString(), appSettings);
 
                 var cb = new Codebird;
-                cb.setBearerToken(apingApiKeys.twitter);
+
+                cb.setBearerToken(apingUtilityHelper.getApiCredentials(apingCodebirdHelper.getThisPlattformString(), "bearer_token"));
 
                 requests.forEach(function (request) {
 

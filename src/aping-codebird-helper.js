@@ -101,6 +101,8 @@ jjtApingCodebird.service('apingCodebirdHelper', ['apingModels', 'apingTimeHelper
             likes: _item.favorite_count,
         });
 
+        socialObject.date_time = new Date(socialObject.timestamp);
+
         if(_item.entities && _item.entities.media && _item.entities.media.length>0) {
             socialObject.source = _item.entities.media;
             socialObject.img_url = this.getImageUrlFromMediaObject(_item.entities.media[0]);
@@ -133,6 +135,8 @@ jjtApingCodebird.service('apingCodebirdHelper', ['apingModels', 'apingTimeHelper
             shares: _item.retweet_count,
             likes: _item.favorite_count,
         });
+
+        imageObject.date_time = new Date(imageObject.timestamp);
 
         if(_item.entities && _item.entities.media && _item.entities.media.length>0) {
             imageObject.source = _item.entities.media;

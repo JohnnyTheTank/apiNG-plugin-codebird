@@ -41,6 +41,10 @@ var jjtApingCodebird = angular.module("jtt_aping_codebird", [])
                             params.geocode = request.lat+","+request.lng+","+(request.distance || "1" )+"km";
                         }
 
+                        if(typeof request.language !== "undefined") {
+                            params.lang = request.language;
+                        }
+
                         cb.__call(
                             "search_tweets",
                             params,

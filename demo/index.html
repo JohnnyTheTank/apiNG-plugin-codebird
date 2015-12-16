@@ -15,10 +15,14 @@
     <script src="../src/aping-codebird-helper.js"></script>
 </head>
 <body ng-app="app">
-    <!--
-    <aping model="image" aping-codebird="[{'search':'zdf', 'result_type':'recent'}]"></aping>
+    <h1>{'search':'münchen', 'result_type':'recent'}</h1>
+    <aping model="social" aping-codebird="[{'search':'münchen', 'result_type':'recent'}]"></aping>
+    <hr>
+    <h1>{'search':'münchen', 'result_type':'recent', 'lat':'48.1374300', 'lng':'11.5754900', 'distance':5}</h1>
+    <aping model="social" aping-codebird="[{'search':'münchen', 'result_type':'recent', 'lat':'48.1374300', 'lng':'11.5754900', 'distance':5}]"></aping>
     <br>
-    -->
-    <aping model="social" aping-codebird="[{'user':'passy', 'showAvatar':false, 'exclude_replies':false, 'include_rts':false}]"></aping>
+    <h1>{'user':'passy', 'showAvatar':false, 'exclude_replies':true, 'include_rts':false}</h1>
+    <aping model="social" aping-codebird="[{'user':'passy', 'showAvatar':false, 'exclude_replies':false, 'include_rts':false, 'items':30}]"></aping>
+
 </body>
 </html>

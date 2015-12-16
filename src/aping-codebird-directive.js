@@ -54,6 +54,15 @@ var jjtApingCodebird = angular.module("jtt_aping_codebird", [])
                             contributor_details: true,
                             count: request.items || appSettings.items
                         };
+
+                        if(request.exclude_replies === true || request.exclude_replies === "true"){
+                            params.exclude_replies = true;
+                        }
+
+                        if(request.include_rts === false || request.include_rts === "false"){
+                            params.include_rts = false;
+                        }
+
                         cb.__call(
                             "statuses_userTimeline",
                             params,

@@ -26,6 +26,7 @@ var jjtApingCodebird = angular.module("jtt_aping_codebird", [])
 
                     var codebirdSettings = {
                         showAvatar : request.showAvatar || false,
+                        getNativeData : appSettings.getNativeData,
                     };
 
                     if(request.search) {

@@ -71,17 +71,22 @@ jjtApingCodebird.service('apingCodebirdHelper', ['apingModels', 'apingTimeHelper
     this.getItemByJsonData = function (_item, _model, _codebirdSettings) {
         var returnObject = {};
         if (_item && _model) {
-            switch (_model) {
-                case "social":
-                    returnObject = this.getSocialItemByJsonData(_item, _codebirdSettings);
-                    break;
 
-                case "image":
-                    returnObject = this.getImageItemByJsonData(_item, _codebirdSettings);
-                    break;
+            if(_codebirdSettings.getNativeData === true || _codebirdSettings.getNativeData === "true") {
+                returnObject = this.getNativeItemByJsonData(_item, _model);
+            } else {
+                switch (_model) {
+                    case "social":
+                        returnObject = this.getSocialItemByJsonData(_item, _codebirdSettings);
+                        break;
 
-                default:
-                    return false;
+                    case "image":
+                        returnObject = this.getImageItemByJsonData(_item, _codebirdSettings);
+                        break;
+
+                    default:
+                        return false;
+                }
             }
         }
         return returnObject;
@@ -150,8 +155,26 @@ jjtApingCodebird.service('apingCodebirdHelper', ['apingModels', 'apingTimeHelper
         imageObject.post_url = imageObject.blog_link+"status/"+imageObject.intern_id;
 
         return imageObject;
-    }
+    };
 
+    this.getNativeItemByJsonData = function (_item, _model) {
+
+        var nativeItem = {};
+
+        switch (_model) {
+            case "image":
+                if(!_item.entities || !_item.entities.media || !_item.entities.media.length>0 || !this.getImageUrlFromMediaObject(_item.entities.media[0])) {
+                    return false;
+                } else {
+                    nativeItem = _item;
+                }
+                break;
+        }
+
+        nativeItem = _item;
+
+        return nativeItem;
+    }
 
 
 }]);

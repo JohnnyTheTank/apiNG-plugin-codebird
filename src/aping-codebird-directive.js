@@ -35,26 +35,36 @@ var jjtApingCodebird = angular.module("jtt_aping_codebird", [])
                         helperObject.getNativeData = false;
                     }
 
+                    //create requestObject for api request call
+                    var requestObject = {};
+                    if(typeof request.items !== "undefined") {
+                        requestObject.count = request.items;
+                    } else {
+                        requestObject.count = appSettings.items;
+                    }
+
                     if(request.search) {
+                        requestObject.q = request.search;
+                        requestObject.result_type = request.result_type || "mixed";
 
                         //https://dev.twitter.com/rest/reference/get/search/tweets
-                        var params = {
+                        var requestObject = {
                             q: request.search,
                             result_type: request.result_type || "mixed",
                             count:request.items || appSettings.items,
                         };
 
                         if(typeof request.lat !== "undefined" && typeof request.lng !== "undefined") {
-                            params.geocode = request.lat+","+request.lng+","+(request.distance || "1" )+"km";
+                            requestObject.geocode = request.lat+","+request.lng+","+(request.distance || "1" )+"km";
                         }
 
                         if(typeof request.language !== "undefined") {
-                            params.lang = request.language;
+                            requestObject.lang = request.language;
                         }
 
                         cb.__call(
                             "search_tweets",
-                            params,
+                            requestObject,
                             function (_data) {
                                 apingController.concatToResults(apingCodebirdHelper.getObjectByJsonData(_data, helperObject));
                                 apingController.apply();
@@ -64,23 +74,21 @@ var jjtApingCodebird = angular.module("jtt_aping_codebird", [])
 
                     } else if(request.user) {
                         //https://dev.twitter.com/rest/reference/get/statuses/user_timeline
-                        var params = {
-                            screen_name: request.user,
-                            contributor_details: true,
-                            count: request.items || appSettings.items
-                        };
+
+                        requestObject.screen_name = request.user;
+                        requestObject.contributor_details = true;
 
                         if(request.exclude_replies === true || request.exclude_replies === "true"){
-                            params.exclude_replies = true;
+                            requestObject.exclude_replies = true;
                         }
 
                         if(request.include_rts === false || request.include_rts === "false"){
-                            params.include_rts = false;
+                            requestObject.include_rts = false;
                         }
 
                         cb.__call(
                             "statuses_userTimeline",
-                            params,
+                            requestObject,
                             function (_data, rate, err) {
                                 apingController.concatToResults(apingCodebirdHelper.getObjectByJsonData(_data, helperObject));
                                 apingController.apply();

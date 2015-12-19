@@ -40,7 +40,7 @@ jjtApingCodebird.service('apingCodebirdHelper', ['apingModels', 'apingTimeHelper
         return false;
     };
 
-    this.getObjectByJsonData = function (_data, _model, _codebirdSettings) {
+    this.getObjectByJsonData = function (_data, _helperObject) {
 
         var requestResults = [];
         if (_data) {
@@ -49,14 +49,14 @@ jjtApingCodebird.service('apingCodebirdHelper', ['apingModels', 'apingTimeHelper
             if (_data.statuses) {
 
                 angular.forEach(_data.statuses, function (value, key) {
-                    var tempResult = _this.getItemByJsonData(value, _model, _codebirdSettings);
+                    var tempResult = _this.getItemByJsonData(value, _helperObject);
                     if(tempResult) {
                         requestResults.push(tempResult);
                     }
                 });
             } else if (_data.length > 0) {
                 angular.forEach(_data, function (value, key) {
-                    var tempResult = _this.getItemByJsonData(value, _model, _codebirdSettings);
+                    var tempResult = _this.getItemByJsonData(value, _helperObject);
                     if(tempResult) {
                         requestResults.push(tempResult);
                     }
@@ -68,20 +68,20 @@ jjtApingCodebird.service('apingCodebirdHelper', ['apingModels', 'apingTimeHelper
         return requestResults;
     };
 
-    this.getItemByJsonData = function (_item, _model, _codebirdSettings) {
+    this.getItemByJsonData = function (_item, _helperObject) {
         var returnObject = {};
-        if (_item && _model) {
+        if (_item && _helperObject.model) {
 
-            if(_codebirdSettings.getNativeData === true || _codebirdSettings.getNativeData === "true") {
-                returnObject = this.getNativeItemByJsonData(_item, _model);
+            if(_helperObject.getNativeData === true || _helperObject.getNativeData === "true") {
+                returnObject = this.getNativeItemByJsonData(_item, _helperObject.model);
             } else {
-                switch (_model) {
+                switch (_helperObject.model) {
                     case "social":
-                        returnObject = this.getSocialItemByJsonData(_item, _codebirdSettings);
+                        returnObject = this.getSocialItemByJsonData(_item, _helperObject);
                         break;
 
                     case "image":
-                        returnObject = this.getImageItemByJsonData(_item, _codebirdSettings);
+                        returnObject = this.getImageItemByJsonData(_item, _helperObject);
                         break;
 
                     default:
@@ -92,7 +92,7 @@ jjtApingCodebird.service('apingCodebirdHelper', ['apingModels', 'apingTimeHelper
         return returnObject;
     };
 
-    this.getSocialItemByJsonData = function (_item, _codebirdSettings) {
+    this.getSocialItemByJsonData = function (_item, _helperObject) {
         var socialObject = apingModels.getNew("social", this.getThisPlattformString());
 
         $.extend(true, socialObject, {
@@ -117,7 +117,7 @@ jjtApingCodebird.service('apingCodebirdHelper', ['apingModels', 'apingTimeHelper
             socialObject.type = "image";
         } else {
             socialObject.type = "tweet";
-            if(_item.user && (_codebirdSettings.showAvatar === true || _codebirdSettings.showAvatar === 'true' ) ) {
+            if(_item.user && (_helperObject.showAvatar === true || _helperObject.showAvatar === 'true' ) ) {
                 socialObject.img_url = this.getImageUrlFromUserObject(_item.user);
             }
         }

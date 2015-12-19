@@ -24,10 +24,16 @@ var jjtApingCodebird = angular.module("jtt_aping_codebird", [])
 
                 requests.forEach(function (request) {
 
-                    var codebirdSettings = {
+                    //create helperObject for helper function call
+                    var helperObject = {
+                        model: appSettings.model,
                         showAvatar : request.showAvatar || false,
-                        getNativeData : appSettings.getNativeData,
                     };
+                    if(typeof appSettings.getNativeData !== "undefined") {
+                        helperObject.getNativeData = appSettings.getNativeData;
+                    } else {
+                        helperObject.getNativeData = false;
+                    }
 
                     if(request.search) {
 
@@ -50,7 +56,7 @@ var jjtApingCodebird = angular.module("jtt_aping_codebird", [])
                             "search_tweets",
                             params,
                             function (_data) {
-                                apingController.concatToResults(apingCodebirdHelper.getObjectByJsonData(_data, appSettings.model, codebirdSettings));
+                                apingController.concatToResults(apingCodebirdHelper.getObjectByJsonData(_data, helperObject));
                                 apingController.apply();
                             },
                             true
@@ -76,7 +82,7 @@ var jjtApingCodebird = angular.module("jtt_aping_codebird", [])
                             "statuses_userTimeline",
                             params,
                             function (_data, rate, err) {
-                                apingController.concatToResults(apingCodebirdHelper.getObjectByJsonData(_data, appSettings.model, codebirdSettings));
+                                apingController.concatToResults(apingCodebirdHelper.getObjectByJsonData(_data, helperObject));
                                 apingController.apply();
                             },
                             true

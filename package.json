@@ -1,6 +1,6 @@
 {
   "name": "aping-plugin-codebird",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "twitter plugin for apiNG",
   "main": "Gruntfile.js",
   "scripts": {

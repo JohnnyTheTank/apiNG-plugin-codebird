@@ -53,8 +53,8 @@ var jjtApingCodebird = angular.module("jtt_aping_codebird", [])
                     }
 
                     // the api has a limit of 100 items per request
-                    if(requestObject.maxResults > 100) {
-                        requestObject.maxResults = 100;
+                    if(requestObject.count > 100) {
+                        requestObject.count = 100;
                     }
 
                     if(request.search) {

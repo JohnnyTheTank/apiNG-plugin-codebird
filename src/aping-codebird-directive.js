@@ -43,16 +43,24 @@ var jjtApingCodebird = angular.module("jtt_aping_codebird", [])
                         requestObject.count = appSettings.items;
                     }
 
+                    if(requestObject.count == 0) {
+                        return false;
+                    }
+
+                    // -1 is "no explicit limit". same for NaN value
+                    if(requestObject.count < 0 || isNaN(requestObject.count)) {
+                        requestObject.count = undefined;
+                    }
+
+                    // the api has a limit of 100 items per request
+                    if(requestObject.maxResults > 100) {
+                        requestObject.maxResults = 100;
+                    }
+
                     if(request.search) {
+                        // https://dev.twitter.com/rest/reference/get/search/tweets
                         requestObject.q = request.search;
                         requestObject.result_type = request.result_type || "mixed";
-
-                        //https://dev.twitter.com/rest/reference/get/search/tweets
-                        var requestObject = {
-                            q: request.search,
-                            result_type: request.result_type || "mixed",
-                            count:request.items || appSettings.items,
-                        };
 
                         if(typeof request.lat !== "undefined" && typeof request.lng !== "undefined") {
                             requestObject.geocode = request.lat+","+request.lng+","+(request.distance || "1" )+"km";
@@ -73,7 +81,7 @@ var jjtApingCodebird = angular.module("jtt_aping_codebird", [])
                         );
 
                     } else if(request.user) {
-                        //https://dev.twitter.com/rest/reference/get/statuses/user_timeline
+                        // https://dev.twitter.com/rest/reference/get/statuses/user_timeline
 
                         requestObject.screen_name = request.user;
                         requestObject.contributor_details = true;

@@ -26,7 +26,7 @@ jjtApingCodebird.service('apingCodebirdHelper', ['apingModels', 'apingTimeHelper
                 return this.getBigImageUrlFromSmallImageUrl(_item.media_url);
             }
         }
-        return false;
+        return undefined;
     };
     this.getImageUrlFromUserObject = function (_item) {
         if(_item) {
@@ -37,7 +37,7 @@ jjtApingCodebird.service('apingCodebirdHelper', ['apingModels', 'apingTimeHelper
                 return this.getBigImageUrlFromSmallImageUrl(_item.profile_image_url);
             }
         }
-        return false;
+        return undefined;
     };
 
     this.getObjectByJsonData = function (_data, _helperObject) {

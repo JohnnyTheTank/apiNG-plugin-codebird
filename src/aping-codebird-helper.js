@@ -40,6 +40,50 @@ jjtApingCodebird.service('apingCodebirdHelper', ['apingModels', 'apingTimeHelper
         return undefined;
     };
 
+    this.getImagesObjectFromMediaObject = function (_item) {
+        var returnObject = {
+            thumb_url: undefined,
+            thumb_width: undefined, // best case 200px (min)
+            thumb_height: undefined,
+            img_url: undefined,
+            img_width: undefined, // best case 700px
+            img_height: undefined,
+            native_url: undefined,
+            native_width: undefined,
+            native_height: undefined,
+        };
+
+        var baseUrl = this.getImageUrlFromMediaObject(_item);
+
+        if(_item.sizes) {
+            if(typeof _item.sizes['small'] !== "undefined") {
+                returnObject.thumb_url = baseUrl+":small";
+                returnObject.thumb_width = _item.sizes['small'].w || undefined;
+                returnObject.thumb_height = _item.sizes['small'].h || undefined;
+            } else {
+                returnObject.thumb_url = baseUrl;
+            }
+
+            if(typeof _item.sizes['medium'] !== "undefined") {
+                returnObject.img_url = baseUrl+":medium";
+                returnObject.img_width = _item.sizes['medium'].w || undefined;
+                returnObject.img_height = _item.sizes['medium'].h || undefined;
+            } else {
+                returnObject.img_url = baseUrl;
+            }
+
+            if(typeof _item.sizes['large'] !== "undefined") {
+                returnObject.native_url = baseUrl+":large";
+                returnObject.native_width = _item.sizes['large'].w || undefined;
+                returnObject.native_height = _item.sizes['large'].h || undefined;
+            } else {
+                returnObject.native_url = baseUrl;
+            }
+        }
+
+        return returnObject;
+    };
+
     this.getObjectByJsonData = function (_data, _helperObject) {
 
         var requestResults = [];
@@ -144,8 +188,15 @@ jjtApingCodebird.service('apingCodebirdHelper', ['apingModels', 'apingTimeHelper
         imageObject.date_time = new Date(imageObject.timestamp);
 
         if(_item.entities && _item.entities.media && _item.entities.media.length>0) {
+
             imageObject.source = _item.entities.media;
-            imageObject.img_url = this.getImageUrlFromMediaObject(_item.entities.media[0]);
+
+            var tempImageArray = this.getImagesObjectFromMediaObject(_item.entities.media[0]);
+            $.extend(true, imageObject, tempImageArray);
+
+            if(!imageObject.img_url) {
+                imageObject.img_url = this.getImageUrlFromMediaObject(_item.entities.media[0]);
+            }
         }
 
         if(!imageObject.img_url) {
@@ -175,6 +226,4 @@ jjtApingCodebird.service('apingCodebirdHelper', ['apingModels', 'apingTimeHelper
 
         return nativeItem;
     }
-
-
 }]);

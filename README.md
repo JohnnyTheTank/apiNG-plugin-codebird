@@ -110,7 +110,7 @@ Every **apiNG plugin** expects an array of **requests** as html attribute.
 | **`items`**  | `20` | `15` | Items per request (`0`-`100`) |  yes  |
 | **`showAvatar`** | `true` | `false` | Use `true` for show users avatar as image if post has no own image | yes |
 | **`exclude_replies`** | `true` | `false` | This parameter will prevent replies from appearing in the returned timeline. Using exclude_replies with the `items` parameter will mean you will receive up-to count tweets — this is because the `items` parameter retrieves that many tweets before filtering out retweets and replies. | yes |
-| **`include_rts`** | `false` | `true` | When set to `false`, the timeline will strip any native retweets (though they will still count toward both the maximal length of the timeline and the slice selected by the count parameter). Note: If you’re using the trim_user parameter in conjunction with include_rts, the retweets will still contain a full user object. | yes |
+| **`include_rts`** | `false` | `true` | When set to `false`, the timeline will strip any native retweets (though they will still count toward both the maximal length of the timeline and the slice selected by the count parameter). | yes |
 
 Sample requests:
 * `[{'user':'johnnyzeitlos'}, {'user':'jowe'}, {'user':'angularui'}]`

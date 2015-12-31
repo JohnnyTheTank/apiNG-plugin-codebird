@@ -114,7 +114,7 @@ Every **apiNG plugin** expects an array of **requests** as html attribute.
 
 Sample requests:
 * `[{'user':'johnnyzeitlos'}, {'user':'jowe'}, {'user':'angularui'}]`
-* `[{'user':'AngularAir', 'items':10, 'showAvatar':'true', 'exclude_replies':'true'}]`
+* `[{'user':'AngularAir', 'items':10, 'showAvatar':'true', 'exclude_replies':true}]`
 
 #### Requests by Search
 |  parameter  | sample | default | description | optional |

@@ -3,7 +3,7 @@ apingApp.config(['$provide', function ($provide) {
 
     $provide.constant("apingApiKeys", {
         twitter: [
-            {'bearer_token':"<YOUR_BEARER_TOKEN>"},
+            {'bearer_token':'<YOUR_TWITTER_BEARER_TOKEN>'},
         ],
     });
 

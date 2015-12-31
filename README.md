@@ -130,7 +130,7 @@ Sample requests:
 
 Sample requests:
 * `[{'search':'#eagles', 'result_type':'recent'}, {'search':'Thomas Müller', 'result_type':'popular'}]`
-* `[{'search':'machu picchu', 'lat':'-13.163333', 'lng':'-72.545556', 'distance':5, 'result_type':'recent'}]`
+* `[{'search':'machu picchu', 'lat':'-13.163333', 'lng':'-72.545556', 'distance':5}]`
 
 ### c) Rate limit
 

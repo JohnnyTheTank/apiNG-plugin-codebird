@@ -27,7 +27,7 @@ You can choose your preferred method of installation:
 ### b) Include files
 Include `apiNG-plugin-codebird.min.js` in your apiNG application
 ```html
-<script src="bower_components/apiNG-plugin-codebird/dist/apiNG-plugin-codebird.min.js"></script>
+<script src="bower_components/apiNG-plugin-codebird/dist/aping-plugin-codebird.min.js"></script>
 ```
 
 ### c) Add dependencies

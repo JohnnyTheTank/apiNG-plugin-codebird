@@ -25,7 +25,7 @@ You can choose your preferred method of installation:
 * Download from github: [apiNG-plugin-codebird.zip](https://github.com/JohnnyTheTank/apiNG-plugin-codebird/zipball/master)
 
 ### b) Include files
-Include `apiNG-plugin-codebird.min.js` in your apiNG application
+Include `aping-plugin-codebird.min.js` in your apiNG application
 ```html
 <script src="bower_components/apiNG-plugin-codebird/dist/aping-plugin-codebird.min.js"></script>
 ```

@@ -5,7 +5,7 @@
 
 # Information
 * **Supported apiNG models: `social`, `image`**
-* Used JavaScript library: [codebird-js](https://github.com/jublonet/codebird-js) _(included in minified distribution file)_
+* Used JavaScript library: [codebird-js](https://github.com/jublonet/codebird-js) _(included in distribution files)_
 
 # Documentation
     I.   INSTALLATION
@@ -13,21 +13,31 @@
     III. USAGE
 
 ## I. INSTALLATION
-    a) Get files
-    b) Include files
+    a) Get file
+    b) Include file
     c) Add dependencies
     d) Add the plugin
 
-### a) Get files
+### a) Get file
 You can choose your preferred method of installation:
 
-* Via bower: `bower install apiNG-plugin-codebird --save`
-* Download from github: [apiNG-plugin-codebird.zip](https://github.com/JohnnyTheTank/apiNG-plugin-codebird/zipball/master)
+1. Install via either [bower](http://bower.io/), [npm](https://www.npmjs.com/) or downloaded files:
+    1. `bower install apiNG-plugin-codebird --save`
+    2. `npm install aping-plugin-codebird --save`
+    3. download [apiNG-plugin-codebird.zip](https://github.com/JohnnyTheTank/apiNG-plugin-codebird/zipball/master)
 
-### b) Include files
+### b) Include file
 Include `aping-plugin-codebird.min.js` in your apiNG application
+
 ```html
+<!-- when using bower -->
 <script src="bower_components/apiNG-plugin-codebird/dist/aping-plugin-codebird.min.js"></script>
+
+<!-- when using npm -->
+<script src="node_modules/aping-plugin-codebird/dist/aping-plugin-codebird.min.js"></script>
+
+<!-- when using downloaded files -->
+<script src="aping-plugin-codebird.min.js"></script>
 ```
 
 ### c) Add dependencies

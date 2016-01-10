@@ -1,7 +1,7 @@
 {
   "name": "aping-plugin-codebird",
-  "version": "0.7.0",
-  "description": "twitter plugin for apiNG",
+  "version": "0.7.5",
+  "description": "Twitter plugin for apiNG",
   "main": "dist/aping-plugin-codebird.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,12 +19,12 @@
     "json",
     "angular"
   ],
-  "author": "Jonathan Hornung",
+  "author": "Jonathan Hornung <jonathan.hornung@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/JohnnyTheTank/apiNG-plugin-codebird/issues"
   },
-  "homepage": "https://github.com/JohnnyTheTank/apiNG-plugin-codebird#readme",
+  "homepage": "https://github.com/JohnnyTheTank/apiNG-plugin-codebird",
   "devDependencies": {
     "codebird": "*",
     "grunt": "^0.4.5",

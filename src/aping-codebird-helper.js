@@ -12,22 +12,22 @@ jjtApingCodebird.service('apingCodebirdHelper', ['apingModels', 'apingTimeHelper
         return _smallImageUrl.replace("_normal", "");
     };
     this.getImageUrlFromMediaObject = function (_item) {
-        if(_item) {
-            if(_item.media_url_https) {
+        if (_item) {
+            if (_item.media_url_https) {
                 return this.getBigImageUrlFromSmallImageUrl(_item.media_url_https);
             }
-            if(_item.media_url) {
+            if (_item.media_url) {
                 return this.getBigImageUrlFromSmallImageUrl(_item.media_url);
             }
         }
         return undefined;
     };
     this.getImageUrlFromUserObject = function (_item) {
-        if(_item) {
-            if(_item.profile_image_url_https) {
+        if (_item) {
+            if (_item.profile_image_url_https) {
                 return this.getBigImageUrlFromSmallImageUrl(_item.profile_image_url_https);
             }
-            if(_item.profile_image_url) {
+            if (_item.profile_image_url) {
                 return this.getBigImageUrlFromSmallImageUrl(_item.profile_image_url);
             }
         }
@@ -49,25 +49,25 @@ jjtApingCodebird.service('apingCodebirdHelper', ['apingModels', 'apingTimeHelper
 
         var baseUrl = this.getImageUrlFromMediaObject(_item);
 
-        if(_item.sizes) {
-            if(typeof _item.sizes['small'] !== "undefined") {
-                returnObject.thumb_url = baseUrl+":small";
+        if (_item.sizes) {
+            if (typeof _item.sizes['small'] !== "undefined") {
+                returnObject.thumb_url = baseUrl + ":small";
                 returnObject.thumb_width = _item.sizes['small'].w || undefined;
                 returnObject.thumb_height = _item.sizes['small'].h || undefined;
             } else {
                 returnObject.thumb_url = baseUrl;
             }
 
-            if(typeof _item.sizes['medium'] !== "undefined") {
-                returnObject.img_url = baseUrl+":medium";
+            if (typeof _item.sizes['medium'] !== "undefined") {
+                returnObject.img_url = baseUrl + ":medium";
                 returnObject.img_width = _item.sizes['medium'].w || undefined;
                 returnObject.img_height = _item.sizes['medium'].h || undefined;
             } else {
                 returnObject.img_url = baseUrl;
             }
 
-            if(typeof _item.sizes['large'] !== "undefined") {
-                returnObject.native_url = baseUrl+":large";
+            if (typeof _item.sizes['large'] !== "undefined") {
+                returnObject.native_url = baseUrl + ":large";
                 returnObject.native_width = _item.sizes['large'].w || undefined;
                 returnObject.native_height = _item.sizes['large'].h || undefined;
             } else {
@@ -88,14 +88,14 @@ jjtApingCodebird.service('apingCodebirdHelper', ['apingModels', 'apingTimeHelper
 
                 angular.forEach(_data.statuses, function (value, key) {
                     var tempResult = _this.getItemByJsonData(value, _helperObject);
-                    if(tempResult) {
+                    if (tempResult) {
                         requestResults.push(tempResult);
                     }
                 });
             } else if (_data.length > 0) {
                 angular.forEach(_data, function (value, key) {
                     var tempResult = _this.getItemByJsonData(value, _helperObject);
-                    if(tempResult) {
+                    if (tempResult) {
                         requestResults.push(tempResult);
                     }
                 });
@@ -110,7 +110,7 @@ jjtApingCodebird.service('apingCodebirdHelper', ['apingModels', 'apingTimeHelper
         var returnObject = {};
         if (_item && _helperObject.model) {
 
-            if(_helperObject.getNativeData === true || _helperObject.getNativeData === "true") {
+            if (_helperObject.getNativeData === true || _helperObject.getNativeData === "true") {
                 returnObject = this.getNativeItemByJsonData(_item, _helperObject.model);
             } else {
                 switch (_helperObject.model) {
@@ -146,21 +146,21 @@ jjtApingCodebird.service('apingCodebirdHelper', ['apingModels', 'apingTimeHelper
 
         socialObject.date_time = new Date(socialObject.timestamp);
 
-        if(_item.entities && _item.entities.media && _item.entities.media.length>0) {
+        if (_item.entities && _item.entities.media && _item.entities.media.length > 0) {
             socialObject.source = _item.entities.media;
             socialObject.img_url = this.getImageUrlFromMediaObject(_item.entities.media[0]);
         }
 
-        if(socialObject.img_url) {
+        if (socialObject.img_url) {
             socialObject.type = "image";
         } else {
             socialObject.type = "tweet";
-            if(_item.user && (_helperObject.showAvatar === true || _helperObject.showAvatar === 'true' ) ) {
+            if (_item.user && (_helperObject.showAvatar === true || _helperObject.showAvatar === 'true' )) {
                 socialObject.img_url = this.getImageUrlFromUserObject(_item.user);
             }
         }
 
-        socialObject.post_url = socialObject.blog_link+"status/"+socialObject.intern_id;
+        socialObject.post_url = socialObject.blog_link + "status/" + socialObject.intern_id;
 
         return socialObject;
     };
@@ -181,23 +181,23 @@ jjtApingCodebird.service('apingCodebirdHelper', ['apingModels', 'apingTimeHelper
 
         imageObject.date_time = new Date(imageObject.timestamp);
 
-        if(_item.entities && _item.entities.media && _item.entities.media.length>0) {
+        if (_item.entities && _item.entities.media && _item.entities.media.length > 0) {
 
             imageObject.source = _item.entities.media;
 
             var tempImageArray = this.getImagesObjectFromMediaObject(_item.entities.media[0]);
             $.extend(true, imageObject, tempImageArray);
 
-            if(!imageObject.img_url) {
+            if (!imageObject.img_url) {
                 imageObject.img_url = this.getImageUrlFromMediaObject(_item.entities.media[0]);
             }
         }
 
-        if(!imageObject.img_url) {
+        if (!imageObject.img_url) {
             return false;
         }
 
-        imageObject.post_url = imageObject.blog_link+"status/"+imageObject.intern_id;
+        imageObject.post_url = imageObject.blog_link + "status/" + imageObject.intern_id;
 
         return imageObject;
     };
@@ -208,7 +208,7 @@ jjtApingCodebird.service('apingCodebirdHelper', ['apingModels', 'apingTimeHelper
 
         switch (_model) {
             case "image":
-                if(!_item.entities || !_item.entities.media || !_item.entities.media.length>0 || !this.getImageUrlFromMediaObject(_item.entities.media[0])) {
+                if (!_item.entities || !_item.entities.media || !_item.entities.media.length > 0 || !this.getImageUrlFromMediaObject(_item.entities.media[0])) {
                     return false;
                 } else {
                     nativeItem = _item;

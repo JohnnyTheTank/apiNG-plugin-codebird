@@ -53,7 +53,7 @@ var app = angular.module('app', ['jtt_aping', 'jtt_aping_codebird']);
 ```
 
 ### IV. Add the plugin
-Add the plugin's directive `aping-codebird="[]"` to your apiNG directive and configure your requests [configure your requests](#ii-requests)
+Add the plugin's directive `aping-codebird="[]"` to your apiNG directive and [configure your requests](#ii-requests)
 ```html
 <aping
     template-url="templates/social.html"

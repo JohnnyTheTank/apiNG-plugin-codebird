@@ -4,8 +4,8 @@
   "authors": [
     "Jonathan Hornung <jonathan.hornung@gmail.com>"
   ],
-  "version": "0.7.0",
-  "description": "twitter plugin for apiNG",
+  "version": "0.7.5",
+  "description": "Twitter plugin for apiNG",
   "main": "dist/aping-plugin-codebird.min.js",
   "moduleType": [],
   "keywords": [

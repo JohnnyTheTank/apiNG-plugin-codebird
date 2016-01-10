@@ -27,10 +27,11 @@
 ### I. Get file
 You can choose your preferred method of installation:
 
-1. Install via either [bower](http://bower.io/), [npm](https://www.npmjs.com/) or downloaded files:
-    1. `bower install apiNG-plugin-codebird --save`
-    2. `npm install aping-plugin-codebird --save`
-    3. download [apiNG-plugin-codebird.zip](https://github.com/JohnnyTheTank/apiNG-plugin-codebird/zipball/master)
+Install via either [bower](http://bower.io/), [npm](https://www.npmjs.com/) or downloaded files:
+
+* `bower install apiNG-plugin-codebird --save`
+* `npm install aping-plugin-codebird --save`
+* download [apiNG-plugin-codebird.zip](https://github.com/JohnnyTheTank/apiNG-plugin-codebird/zipball/master)
 
 ### II. Include file
 Include `aping-plugin-codebird.min.js` in your apiNG application

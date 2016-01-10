@@ -5,20 +5,26 @@
 
 # Information
 * **Supported apiNG models: `social`, `image`**
+* This plugin supports the [`get-native-data` parameter](https://aping.readme.io/docs/configuration#parameters)
+* This plugin needs an [bearer token](#2-bearer-token) :warning:
 * Used JavaScript library: [codebird-js](https://github.com/jublonet/codebird-js) _(included in distribution files)_
 
 # Documentation
-    I.   INSTALLATION
-    II.  BEARER TOKEN
-    III. USAGE
+1. [INSTALLATION](#1-installation)
+    1. Get file
+    2. Include file
+    3. Add dependencies
+    4. Add plugin
+2. [BEARER TOKEN](#2-bearer-token)
+    1. Generate your `bearer_token`
+    2. Insert your `bearer_token` into `aping-config.js`
+3. [USAGE](#3-usage)
+    1. Models
+    2. Requests
 
-## I. INSTALLATION
-    a) Get file
-    b) Include file
-    c) Add dependencies
-    d) Add the plugin
+## 1. INSTALLATION
 
-### a) Get file
+### I. Get file
 You can choose your preferred method of installation:
 
 1. Install via either [bower](http://bower.io/), [npm](https://www.npmjs.com/) or downloaded files:
@@ -26,7 +32,7 @@ You can choose your preferred method of installation:
     2. `npm install aping-plugin-codebird --save`
     3. download [apiNG-plugin-codebird.zip](https://github.com/JohnnyTheTank/apiNG-plugin-codebird/zipball/master)
 
-### b) Include file
+### II. Include file
 Include `aping-plugin-codebird.min.js` in your apiNG application
 
 ```html
@@ -40,14 +46,14 @@ Include `aping-plugin-codebird.min.js` in your apiNG application
 <script src="aping-plugin-codebird.min.js"></script>
 ```
 
-### c) Add dependencies
+### III. Add dependencies
 Add the module `jtt_aping_codebird` as a dependency to your app module:
 ```js
 var app = angular.module('app', ['jtt_aping', 'jtt_aping_codebird']);
 ```
 
-### d) Add the plugin
-Add the plugin's directive `aping-codebird="[]"` to your apiNG directive and configure your requests (_**III. USAGE**_)
+### IV. Add the plugin
+Add the plugin's directive `aping-codebird="[]"` to your apiNG directive and configure your requests [configure your requests](#ii-requests)
 ```html
 <aping
     template-url="templates/social.html"
@@ -57,11 +63,8 @@ Add the plugin's directive `aping-codebird="[]"` to your apiNG directive and con
 </aping>
 ```
 
-## II. BEARER TOKEN
-    a) Generate your `bearer_token`
-    b) Insert your `bearer_token` into `aping-config.js`
-
-### a) Generate your `bearer_token`
+## 2. BEARER TOKEN
+### I. Generate your `bearer_token`
 1. Login on [dev.twitter.com](https://dev.twitter.com/)
 2. Navigate to [apps.twitter.com](https://apps.twitter.com/)
     - Create an new app
@@ -72,7 +75,7 @@ Add the plugin's directive `aping-codebird="[]"` to your apiNG directive and con
     - Follow this official introductions: https://dev.twitter.com/oauth/reference/post/oauth2/token
     - OR just use this simple generator: https://gearside.com/nebula/documentation/utilities/twitter-bearer-token-generator/
 
-### b) Insert your `bearer_token` into `aping-config.js`
+### II. Insert your `bearer_token` into `aping-config.js`
 Open `js/apiNG/aping-config.js` in your application folder. It should be look like this snippet:
 ```js
 apingApp.config(['$provide', function ($provide) {
@@ -92,12 +95,9 @@ apingApp.config(['$provide', function ($provide) {
 
 :warning: Replace `<YOUR_TWITTER_BEARER_TOKEN>` with your twitter `bearer_token`
 
-## III. USAGE
-    a) Models
-    b) Requests
-    c) Rate limit
+## 3. USAGE
 
-### a) Models
+### I. Models
 Supported apiNG models
 
 |  model   | content | support | max items<br>per request | (native) default items<br>per request |
@@ -110,7 +110,7 @@ Supported apiNG models
 * partly: _the source platfrom provides just partly usable results_
 
 
-### b) Requests
+### II. Requests
 Every **apiNG plugin** expects an array of **requests** as html attribute.
 
 #### Requests by User
@@ -142,7 +142,7 @@ Sample requests:
 * `[{'search':'#eagles', 'result_type':'recent'}, {'search':'Thomas Müller', 'result_type':'popular'}]`
 * `[{'search':'machu picchu', 'lat':'-13.163333', 'lng':'-72.545556', 'distance':5}]`
 
-### c) Rate limit
+### III. Rate limit
 
 Visit the official Twitter REST API rate limit documentations
 * [Rate Limits](https://dev.twitter.com/rest/public/rate-limiting)

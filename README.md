@@ -21,6 +21,7 @@
 3. [USAGE](#3-usage)
     1. Models
     2. Requests
+    3. Rate limit
 
 ## 1. INSTALLATION
 

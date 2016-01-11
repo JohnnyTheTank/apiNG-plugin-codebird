@@ -1,6 +1,6 @@
 {
   "name": "aping-plugin-codebird",
-  "version": "0.7.5",
+  "version": "0.7.6",
   "description": "Twitter plugin for apiNG",
   "main": "dist/aping-plugin-codebird.min.js",
   "scripts": {

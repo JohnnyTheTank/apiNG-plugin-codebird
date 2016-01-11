@@ -1,6 +1,6 @@
 /**
     @name: aping-plugin-codebird 
-    @version: 0.7.5 (10-01-2016) 
+    @version: 0.7.5 (11-01-2016) 
     @author: Jonathan Hornung <jonathan.hornung@gmail.com> 
     @url: https://github.com/JohnnyTheTank/apiNG-plugin-codebird 
     @license: MIT
@@ -44,7 +44,7 @@ var jjtApingCodebird = angular.module("jtt_aping_codebird", [])
                         requestObject.count = appSettings.items;
                     }
 
-                    if (requestObject.count == 0) {
+                    if (requestObject.count === 0 || requestObject.count === '0') {
                         return false;
                     }
 

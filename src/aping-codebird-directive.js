@@ -37,7 +37,7 @@ var jjtApingCodebird = angular.module("jtt_aping_codebird", [])
                         requestObject.count = appSettings.items;
                     }
 
-                    if (requestObject.count == 0) {
+                    if (requestObject.count === 0 || requestObject.count === '0') {
                         return false;
                     }
 

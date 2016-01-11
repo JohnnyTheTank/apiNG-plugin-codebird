@@ -76,19 +76,17 @@ Add the plugin's directive `aping-codebird="[]"` to your apiNG directive and [co
     - OR just use this simple generator: https://gearside.com/nebula/documentation/utilities/twitter-bearer-token-generator/
 
 ### II. Insert your `bearer_token` into `aping-config.js`
-Open `js/apiNG/aping-config.js` in your application folder. It should be look like this snippet:
+Create and open `js/apiNG/aping-config.js` in your application folder. It should be look like this snippet:
 ```js
 apingApp.config(['$provide', function ($provide) {
-    $provide.constant("apingApiKeys", {
-        //...
-        twitter: [
-            {'bearer_token':"<YOUR_TWITTER_BEARER_TOKEN>"},
-        ],
-        //...
-    });
-
-    $provide.constant("apingDefaultSettings", {
-        //...
+    $provide.value("apingDefaultSettings", {
+        apingApiKeys : {
+            //...
+            bandsintown: [
+                {'app_id':'<YOUR_BANDSINTOWN_APP_ID>'}
+            ],
+            //...
+        }
     });
 }]);
 ```

@@ -82,8 +82,8 @@ apingApp.config(['$provide', function ($provide) {
     $provide.value("apingDefaultSettings", {
         apingApiKeys : {
             //...
-            bandsintown: [
-                {'app_id':'<YOUR_BANDSINTOWN_APP_ID>'}
+            twitter: [
+                {'bearer_token':'<YOUR_TWITTER_BEARER_TOKEN>'}
             ],
             //...
         }

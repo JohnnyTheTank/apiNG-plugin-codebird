@@ -3,9 +3,12 @@
 
 **_apiNG-plugin-codebird_** is a [Twitter REST API](https://dev.twitter.com/rest/public) plugin for [**apiNG**](https://github.com/JohnnyTheTank/apiNG).
 
+[![npm version](https://badge.fury.io/js/aping-plugin-codebird.png)](https://badge.fury.io/js/aping-plugin-codebird)
+[![Bower version](https://badge.fury.io/bo/apiNG-plugin-codebird.png)](https://badge.fury.io/bo/apiNG-plugin-codebird)
+
 # Information
 * **Supported apiNG models: `social`, `image`**
-* This plugin supports the [`get-native-data` parameter](https://aping.readme.io/docs/configuration#parameters)
+* This plugin supports the [`get-native-data` parameter](https://aping.readme.io/docs/advanced#parameters)
 * This plugin needs an [bearer token](#2-bearer-token) :warning:
 * Used JavaScript library: [codebird-js](https://github.com/jublonet/codebird-js) _(included in distribution files)_
 
@@ -13,7 +16,7 @@
 1. [INSTALLATION](#1-installation)
     1. Get file
     2. Include file
-    3. Add dependencies
+    3. Add dependency
     4. Add plugin
 2. [BEARER TOKEN](#2-bearer-token)
     1. Generate your `bearer_token`
@@ -46,7 +49,7 @@ Include `aping-plugin-codebird.min.js` in your apiNG application
 <script src="aping-plugin-codebird.min.js"></script>
 ```
 
-### III. Add dependencies
+### III. Add dependency
 Add the module `jtt_aping_codebird` as a dependency to your app module:
 ```js
 var app = angular.module('app', ['jtt_aping', 'jtt_aping_codebird']);

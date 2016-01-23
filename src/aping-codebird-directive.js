@@ -1,6 +1,6 @@
 "use strict";
 
-var jjtApingCodebird = angular.module("jtt_aping_codebird", [])
+angular.module("jtt_aping_codebird", [])
     .directive('apingCodebird', ['apingCodebirdHelper', 'apingUtilityHelper', function (apingCodebirdHelper, apingUtilityHelper) {
         return {
             require: '?aping',

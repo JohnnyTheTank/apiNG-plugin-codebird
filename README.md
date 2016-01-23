@@ -56,7 +56,7 @@ Include `aping-plugin-codebird.min.js` in your apiNG application
 ### III. Add dependency
 Add the module `jtt_aping_codebird` as a dependency to your app module:
 ```js
-var app = angular.module('app', ['jtt_aping', 'jtt_aping_codebird']);
+angular.module('app', ['jtt_aping', 'jtt_aping_codebird']);
 ```
 
 ### IV. Add the plugin
@@ -85,7 +85,7 @@ Add the plugin's directive `aping-codebird="[]"` to your apiNG directive and [co
 ### II. Insert your `bearer_token` into `aping-config.js`
 Create and open `js/apiNG/aping-config.js` in your application folder. It should be look like this snippet:
 ```js
-apingApp.config(['$provide', function ($provide) {
+angular.module('jtt_aping').config(['$provide', function ($provide) {
     $provide.value("apingDefaultSettings", {
         apingApiKeys : {
             twitter: [

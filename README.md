@@ -88,7 +88,6 @@ Create and open `js/apiNG/aping-config.js` in your application folder. It should
 apingApp.config(['$provide', function ($provide) {
     $provide.value("apingDefaultSettings", {
         apingApiKeys : {
-            //...
             twitter: [
                 {'bearer_token':'<YOUR_TWITTER_BEARER_TOKEN>'}
             ],

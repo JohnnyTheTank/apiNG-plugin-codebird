@@ -1,6 +1,6 @@
 /**
     @name: aping-plugin-codebird 
-    @version: 0.7.6 (24-01-2016) 
+    @version: 0.7.7 (24-01-2016) 
     @author: Jonathan Hornung <jonathan.hornung@gmail.com> 
     @url: https://github.com/JohnnyTheTank/apiNG-plugin-codebird 
     @license: MIT
@@ -251,13 +251,15 @@ angular.module("jtt_aping_codebird")
                 blog_id: _item.user.id_str,
                 blog_link: this.getThisPlattformLink() + _item.user.screen_name + "/",
                 intern_id: _item.id_str,
-                timestamp: new Date(Date.parse(_item.created_at.replace(/( \+)/, ' UTC$1'))).getTime(),
+                timestamp: new Date(Date.parse(_item.created_at.replace(/^\w+ (\w+) (\d+) ([\d:]+) \+0000 (\d+)$/, "$1 $2 $4 $3 UTC"))).getTime(),
                 text: _item.text,
                 shares: _item.retweet_count,
                 likes: _item.favorite_count,
             });
 
-            socialObject.date_time = new Date(socialObject.timestamp);
+            if(socialObject.timestamp) {
+                socialObject.date_time = new Date(socialObject.timestamp);
+            }
 
             if (_item.entities && _item.entities.media && _item.entities.media.length > 0) {
                 socialObject.source = _item.entities.media;
@@ -286,13 +288,15 @@ angular.module("jtt_aping_codebird")
                 blog_id: _item.user.id_str,
                 blog_link: this.getThisPlattformLink() + _item.user.screen_name + "/",
                 intern_id: _item.id_str,
-                timestamp: new Date(Date.parse(_item.created_at.replace(/( \+)/, ' UTC$1'))).getTime(),
+                timestamp: new Date(Date.parse(_item.created_at.replace(/^\w+ (\w+) (\d+) ([\d:]+) \+0000 (\d+)$/, "$1 $2 $4 $3 UTC"))).getTime(),
                 text: _item.text,
                 shares: _item.retweet_count,
                 likes: _item.favorite_count,
             });
 
-            imageObject.date_time = new Date(imageObject.timestamp);
+            if(imageObject.timestamp) {
+                imageObject.date_time = new Date(imageObject.timestamp);
+            }
 
             if (_item.entities && _item.entities.media && _item.entities.media.length > 0) {
 

@@ -134,7 +134,7 @@ angular.module("jtt_aping_codebird")
         this.getSocialItemByJsonData = function (_item, _helperObject) {
             var socialObject = apingModels.getNew("social", this.getThisPlattformString());
 
-            $.extend(true, socialObject, {
+            angular.extend(socialObject, {
                 blog_name: _item.user.screen_name,
                 blog_id: _item.user.id_str,
                 blog_link: this.getThisPlattformLink() + _item.user.screen_name + "/",
@@ -171,7 +171,7 @@ angular.module("jtt_aping_codebird")
         this.getImageItemByJsonData = function (_item) {
             var imageObject = apingModels.getNew("image", this.getThisPlattformString());
 
-            $.extend(true, imageObject, {
+            angular.extend(imageObject, {
                 blog_name: _item.user.screen_name,
                 blog_id: _item.user.id_str,
                 blog_link: this.getThisPlattformLink() + _item.user.screen_name + "/",
@@ -191,7 +191,7 @@ angular.module("jtt_aping_codebird")
                 imageObject.source = _item.entities.media;
 
                 var tempImageArray = this.getImagesObjectFromMediaObject(_item.entities.media[0]);
-                $.extend(true, imageObject, tempImageArray);
+                angular.extend(imageObject, tempImageArray);
 
                 if (!imageObject.img_url) {
                     imageObject.img_url = this.getImageUrlFromMediaObject(_item.entities.media[0]);

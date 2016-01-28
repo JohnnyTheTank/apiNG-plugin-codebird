@@ -154,6 +154,14 @@ angular.module("jtt_aping_codebird")
                 socialObject.source = _item.entities.media;
 
                 var tempImageArray = this.getImagesObjectFromMediaObject(_item.entities.media[0]);
+
+                tempImageArray.thumb_width = undefined;
+                tempImageArray.thumb_height = undefined;
+                tempImageArray.img_width = undefined;
+                tempImageArray.img_height = undefined;
+                tempImageArray.native_width = undefined;
+                tempImageArray.native_height = undefined;
+
                 angular.extend(socialObject, tempImageArray);
 
                 if (!socialObject.img_url) {

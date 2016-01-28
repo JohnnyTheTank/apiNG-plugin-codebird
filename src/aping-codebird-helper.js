@@ -150,8 +150,15 @@ angular.module("jtt_aping_codebird")
             }
 
             if (_item.entities && _item.entities.media && _item.entities.media.length > 0) {
+
                 socialObject.source = _item.entities.media;
-                socialObject.img_url = this.getImageUrlFromMediaObject(_item.entities.media[0]);
+
+                var tempImageArray = this.getImagesObjectFromMediaObject(_item.entities.media[0]);
+                angular.extend(socialObject, tempImageArray);
+
+                if (!socialObject.img_url) {
+                    socialObject.img_url = this.getImageUrlFromMediaObject(_item.entities.media[0]);
+                }
             }
 
             if (socialObject.img_url) {

@@ -1,6 +1,6 @@
 /**
     @name: aping-plugin-codebird 
-    @version: 0.7.8 (28-01-2016) 
+    @version: 0.7.8 (01-02-2016) 
     @author: Jonathan Hornung <jonathan.hornung@gmail.com> 
     @url: https://github.com/JohnnyTheTank/apiNG-plugin-codebird 
     @license: MIT
@@ -30,7 +30,7 @@ angular.module("jtt_aping_codebird", [])
                         model: appSettings.model,
                         showAvatar: request.showAvatar || false,
                     };
-                    if (typeof appSettings.getNativeData !== "undefined") {
+                    if (angular.isDefined(appSettings.getNativeData)) {
                         helperObject.getNativeData = appSettings.getNativeData;
                     } else {
                         helperObject.getNativeData = false;
@@ -38,7 +38,8 @@ angular.module("jtt_aping_codebird", [])
 
                     //create requestObject for api request call
                     var requestObject = {};
-                    if (typeof request.items !== "undefined") {
+
+                    if (angular.isDefined(request.items)) {
                         requestObject.count = request.items;
                     } else {
                         requestObject.count = appSettings.items;
@@ -63,11 +64,11 @@ angular.module("jtt_aping_codebird", [])
                         requestObject.q = request.search;
                         requestObject.result_type = request.result_type || "mixed";
 
-                        if (typeof request.lat !== "undefined" && typeof request.lng !== "undefined") {
+                        if (angular.isDefined(request.lat) && angular.isDefined(request.lng)) {
                             requestObject.geocode = request.lat + "," + request.lng + "," + (request.distance || "1" ) + "km";
                         }
 
-                        if (typeof request.language !== "undefined") {
+                        if (angular.isDefined(request.language)) {
                             requestObject.lang = request.language;
                         }
 
@@ -163,7 +164,7 @@ angular.module("jtt_aping_codebird")
             var baseUrl = this.getImageUrlFromMediaObject(_item);
 
             if (_item.sizes) {
-                if (typeof _item.sizes['small'] !== "undefined") {
+                if (angular.isDefined(_item.sizes['small'])) {
                     returnObject.thumb_url = baseUrl + ":small";
                     returnObject.thumb_width = _item.sizes['small'].w || undefined;
                     returnObject.thumb_height = _item.sizes['small'].h || undefined;
@@ -171,7 +172,7 @@ angular.module("jtt_aping_codebird")
                     returnObject.thumb_url = baseUrl;
                 }
 
-                if (typeof _item.sizes['medium'] !== "undefined") {
+                if (angular.isDefined(_item.sizes['medium'])) {
                     returnObject.img_url = baseUrl + ":medium";
                     returnObject.img_width = _item.sizes['medium'].w || undefined;
                     returnObject.img_height = _item.sizes['medium'].h || undefined;
@@ -179,7 +180,7 @@ angular.module("jtt_aping_codebird")
                     returnObject.img_url = baseUrl;
                 }
 
-                if (typeof _item.sizes['large'] !== "undefined") {
+                if (angular.isDefined(_item.sizes['large'])) {
                     returnObject.native_url = baseUrl + ":large";
                     returnObject.native_width = _item.sizes['large'].w || undefined;
                     returnObject.native_height = _item.sizes['large'].h || undefined;

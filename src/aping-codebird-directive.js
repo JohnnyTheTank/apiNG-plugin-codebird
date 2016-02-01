@@ -23,7 +23,7 @@ angular.module("jtt_aping_codebird", [])
                         model: appSettings.model,
                         showAvatar: request.showAvatar || false,
                     };
-                    if (typeof appSettings.getNativeData !== "undefined") {
+                    if (angular.isDefined(appSettings.getNativeData)) {
                         helperObject.getNativeData = appSettings.getNativeData;
                     } else {
                         helperObject.getNativeData = false;
@@ -31,7 +31,8 @@ angular.module("jtt_aping_codebird", [])
 
                     //create requestObject for api request call
                     var requestObject = {};
-                    if (typeof request.items !== "undefined") {
+
+                    if (angular.isDefined(request.items)) {
                         requestObject.count = request.items;
                     } else {
                         requestObject.count = appSettings.items;
@@ -56,11 +57,11 @@ angular.module("jtt_aping_codebird", [])
                         requestObject.q = request.search;
                         requestObject.result_type = request.result_type || "mixed";
 
-                        if (typeof request.lat !== "undefined" && typeof request.lng !== "undefined") {
+                        if (angular.isDefined(request.lat) && angular.isDefined(request.lng)) {
                             requestObject.geocode = request.lat + "," + request.lng + "," + (request.distance || "1" ) + "km";
                         }
 
-                        if (typeof request.language !== "undefined") {
+                        if (angular.isDefined(request.language)) {
                             requestObject.lang = request.language;
                         }
 

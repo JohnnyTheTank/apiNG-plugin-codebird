@@ -51,7 +51,7 @@ angular.module("jtt_aping_codebird")
             var baseUrl = this.getImageUrlFromMediaObject(_item);
 
             if (_item.sizes) {
-                if (typeof _item.sizes['small'] !== "undefined") {
+                if (angular.isDefined(_item.sizes['small'])) {
                     returnObject.thumb_url = baseUrl + ":small";
                     returnObject.thumb_width = _item.sizes['small'].w || undefined;
                     returnObject.thumb_height = _item.sizes['small'].h || undefined;
@@ -59,7 +59,7 @@ angular.module("jtt_aping_codebird")
                     returnObject.thumb_url = baseUrl;
                 }
 
-                if (typeof _item.sizes['medium'] !== "undefined") {
+                if (angular.isDefined(_item.sizes['medium'])) {
                     returnObject.img_url = baseUrl + ":medium";
                     returnObject.img_width = _item.sizes['medium'].w || undefined;
                     returnObject.img_height = _item.sizes['medium'].h || undefined;
@@ -67,7 +67,7 @@ angular.module("jtt_aping_codebird")
                     returnObject.img_url = baseUrl;
                 }
 
-                if (typeof _item.sizes['large'] !== "undefined") {
+                if (angular.isDefined(_item.sizes['large'])) {
                     returnObject.native_url = baseUrl + ":large";
                     returnObject.native_width = _item.sizes['large'].w || undefined;
                     returnObject.native_height = _item.sizes['large'].h || undefined;

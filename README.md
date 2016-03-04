@@ -75,9 +75,9 @@ Add the plugin's directive `aping-codebird="[]"` to your apiNG directive and [co
 1. Login on [dev.twitter.com](https://dev.twitter.com/)
 2. Navigate to [apps.twitter.com](https://apps.twitter.com/)
     - Create an new app
-    - Navigate to https://apps.twitter.com/app/<YOUR_APP_ID>/permissions
+    - Navigate to `https://apps.twitter.com/app/<YOUR_APP_ID>/permissions`
         - Change Access to **Read only** and save
-    - Navigate to https://apps.twitter.com/app/<YOUR_APP_ID>
+    - Navigate to `https://apps.twitter.com/app/<YOUR_APP_ID>` 
 3. Get your `bearer_token`
     - Follow this official introductions: https://dev.twitter.com/oauth/reference/post/oauth2/token
     - OR just use this simple generator: https://gearside.com/nebula/documentation/utilities/twitter-bearer-token-generator/

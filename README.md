@@ -3,6 +3,7 @@
 
 **_apiNG-plugin-codebird_** is a [Twitter REST API](https://dev.twitter.com/rest/public) plugin for [**apiNG**](https://github.com/JohnnyTheTank/apiNG).
 
+[![Join the chat at https://gitter.im/JohnnyTheTank/apiNG](https://img.shields.io/badge/GITTER-join%20chat-green.svg)](https://gitter.im/JohnnyTheTank/apiNG?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![npm version](https://badge.fury.io/js/aping-plugin-codebird.png)](https://badge.fury.io/js/aping-plugin-codebird)
 [![Bower version](https://badge.fury.io/bo/apiNG-plugin-codebird.png)](https://badge.fury.io/bo/apiNG-plugin-codebird)
 

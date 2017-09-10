@@ -48,7 +48,7 @@ Include `aping-plugin-codebird.min.js` in your apiNG application
 <script src="node_modules/aping-plugin-codebird/dist/aping-plugin-codebird.min.js"></script>
 
 <!-- when using cdn file -->
-<script src="//cdn.jsdelivr.net/aping.plugin-codebird/latest/aping-plugin-codebird.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/aping-plugin-codebird@latest/dist/aping-plugin-codebird.min.js"></script>
 
 <!-- when using downloaded files -->
 <script src="aping-plugin-codebird.min.js"></script>
